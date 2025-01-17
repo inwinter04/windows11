@@ -165,11 +165,12 @@ const Taskbar = () => {
               })}
             </div>
             <div>
-              {time.toLocaleDateString("en-US", {
-                year: "2-digit",
+              {time.toLocaleDateString("zh-CN", {
+                year: "numeric",
                 month: "2-digit",
-                day: "numeric",
-              })}
+                day: "2-digit",
+                formatMatcher: "basic"
+              }).replace(/\//g, "/")}
             </div>
           </div>
           <Icon className="graybd my-4" ui width={6} click="SHOWDSK" pr />

@@ -298,8 +298,9 @@ export const CalnWid = () => {
     >
       <div className="topBar pl-4 text-sm">
         <div className="date">
-          {new Date().toLocaleDateString(undefined, {
+          {new Date().toLocaleDateString('zh-CN', {
             weekday: "long",
+            year: "numeric",
             month: "long",
             day: "numeric",
           })}

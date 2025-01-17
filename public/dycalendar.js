@@ -26,48 +26,48 @@
     //name of the months
     monthName = {
       full: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
+        "一月",
+        "二月",
+        "三月",
+        "四月",
+        "五月",
+        "六月",
+        "七月",
+        "八月",
+        "九月",
+        "十月",
+        "十一月",
+        "十二月",
       ],
       mmm: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
       ],
     },
     //name of the days
     dayName = {
       full: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六",
+        "星期日",
       ],
-      d: ["S", "M", "T", "W", "T", "F", "S"],
-      dd: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-      ddd: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      d: ["一", "二", "三", "四", "五", "六", "日"],
+      dd: ["一", "二", "三", "四", "五", "六", "日"],
+      ddd: ["一", "二", "三", "四", "五", "六", "日"],
     };
 
   /**
@@ -86,7 +86,6 @@
     //create 1st row for the day letters
     for (c = 0; c <= 6; c = c + 1) {
       td = document.createElement("td");
-      // td.innerHTML = "SMTWTFS"[c];
       td.innerHTML = dayName.dd[c];
       tr.appendChild(td);
     }
@@ -95,9 +94,12 @@
     //create 2nd row for dates
     tr = document.createElement("tr");
 
+    //calculate first day index for Monday start
+    var mondayFirstIndex = (data.firstDayIndex + 6) % 7;
+
     //blank td
     for (c = 0; c <= 6; c = c + 1) {
-      if (c === data.firstDayIndex) {
+      if (c === mondayFirstIndex) {
         break;
       }
       td = document.createElement("td");
@@ -194,9 +196,9 @@
     elem = document.createElement("span");
     elem.setAttribute("class", "dycalendar-span-month-year");
     if (option.monthformat === "mmm") {
-      elem.innerHTML = data.monthName + " " + data.year;
+      elem.innerHTML = data.year + "年" + data.monthName;
     } else if (option.monthformat === "full") {
-      elem.innerHTML = data.monthNameFull + " " + data.year;
+      elem.innerHTML = data.year + "年" + data.monthNameFull;
     }
 
     //add month span to header div
