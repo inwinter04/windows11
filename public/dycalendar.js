@@ -385,15 +385,13 @@
     dateObj.setFullYear(year);
     dateString = dateObj.toString().split(" ");
 
-    idx = dayName.ddd.indexOf(dateString[0]);
-    result.firstDayIndex = idx;
-    result.firstDayName = dateString[0];
-    result.firstDayFullName = dayName.full[idx];
+    result.firstDayIndex = (dateObj.getDay() + 6) % 7;
+    result.firstDayName = dayName.full[result.firstDayIndex];
+    result.firstDayFullName = dayName.full[result.firstDayIndex];
 
-    idx = monthName.mmm.indexOf(dateString[1]);
-    result.monthIndex = idx;
-    result.monthName = dateString[1];
-    result.monthNameFull = monthName.full[idx];
+    result.monthIndex = month;
+    result.monthName = monthName.mmm[month];
+    result.monthNameFull = monthName.full[month];
 
     //get total days for the month-year
     dateObj.setFullYear(year);
@@ -407,10 +405,9 @@
     dateObj.setDate(date);
     dateString = dateObj.toString().split(" ");
 
-    idx = dayName.ddd.indexOf(dateString[0]);
-    result.targetedDayIndex = idx;
-    result.targetedDayName = dateString[0];
-    result.targetedDayFullName = dayName.full[idx];
+    result.targetedDayIndex = (dateObj.getDay() + 6) % 7;
+    result.targetedDayName = dayName.full[result.targetedDayIndex];
+    result.targetedDayFullName = dayName.full[result.targetedDayIndex];
 
     return result;
   }
